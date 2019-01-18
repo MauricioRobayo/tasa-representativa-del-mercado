@@ -11,41 +11,6 @@ import PrettyDate from "./components/PrettyDate";
 import logo from "./logo.svg";
 import Footer from "./components/Footer";
 
-const fakeServerData = [
-  {
-    value: 3178.81,
-    date: "2018-11-20"
-  },
-  {
-    value: 3196,
-    date: "2018-11-22"
-  },
-  {
-    value: 3196.26,
-    date: "2018-11-23"
-  },
-  {
-    value: 3223.95,
-    date: "2018-11-24"
-  },
-  {
-    value: 3223.95,
-    date: "2018-11-25"
-  },
-  {
-    value: 3213.95,
-    date: "2018-11-26"
-  },
-  {
-    value: 3240.65,
-    date: "2018-11-27"
-  },
-  {
-    value: 3250.56,
-    date: "2018-11-28"
-  }
-];
-
 const defaultTheme = {
   colors: {
     up: "#00C853",
@@ -118,9 +83,21 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    const data = fetch(
-      "https://api.trmapi.com/timeseries?start_date=2018-12-19&end_date=2019-01-19"
-    )
+    const date = new Date();
+    const startDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate() - 30
+    );
+    const endDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate() + 1
+    );
+    const url = `https://api.trmapi.com/timeseries?start_date=${startDate
+      .toISOString()
+      .substring(0, 10)}&end_date=${endDate.toISOString().substring(0, 10)}`;
+    fetch(url)
       .then(response => {
         return response.json();
       })
