@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import styled, {
   createGlobalStyle,
   ThemeProvider
@@ -78,11 +78,63 @@ const AppWrapper = styled.div`
 class App extends Component {
   constructor(props) {
     super(props);
+    this.apiStatuses = {
+      up: 2,
+      seemsDown: 8,
+      down: 9
+    };
     this.state = {
-      trmapiData: []
+      apiStatus: {
+        isLoading: true,
+        status: {
+          date: this.apiStatuses.seemsDown,
+          latest: this.apiStatuses.seemsDown,
+          timeseries: this.apiStatuses.seemsDown
+        }
+      },
+      trmapiData: {
+        isLoading: true,
+        data: []
+      }
     };
   }
-  componentDidMount() {
+  async componentDidMount() {
+    const uptimerobotApiEndpoint = "https://api.uptimerobot.com/v2/getMonitors";
+    const trmapiApiEndpoint = "https://api.trmapi.com/timeseries";
+
+    const statusApiKeys = {
+      date: "m781797926-631e3f4a2285409184ae1e38",
+      latest: "m781581966-601f617ed8c9c269e9ce15c2",
+      timeseries: "m781801938-be596bd67e56f095cf26186d"
+    };
+
+    const statusPromises = Object.values(statusApiKeys).map(apiKey =>
+      fetch(uptimerobotApiEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ api_key: apiKey })
+      })
+    );
+
+    Promise.all(statusPromises).then(responses =>
+      Promise.all(responses.map(response => response.json())).then(
+        apiStatuses => {
+          this.setState({
+            apiStatus: {
+              isLoading: false,
+              status: apiStatuses.reduce((acc, curr) => {
+                acc[curr.monitors[0].friendly_name] = curr.monitors[0].status;
+                return acc;
+              }, {})
+            }
+          });
+        }
+      )
+    );
+
     const date = new Date();
     const startDate = new Date(
       date.getFullYear(),
@@ -94,69 +146,100 @@ class App extends Component {
       date.getMonth(),
       date.getDate() + 1
     );
-    const url = `https://api.trmapi.com/timeseries?start_date=${startDate
+    const url = `${trmapiApiEndpoint}?start_date=${startDate
       .toISOString()
       .substring(0, 10)}&end_date=${endDate.toISOString().substring(0, 10)}`;
     fetch(url)
-      .then(response => {
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
         this.setState({
-          trmapiData: data.map((element, index, array) => {
-            const nextItem = index + 1;
-            element.date = `${element.date}T05:00:00.000Z`;
-            if (nextItem < array.length) {
-              array[nextItem].change = array[nextItem].value - element.value;
-              array[nextItem].percChange =
-                array[nextItem].change / element.value;
-            }
-            return element;
-          })
+          trmapiData: {
+            isLoading: false,
+            data: data.map((element, index, array) => {
+              const nextItem = index + 1;
+              element.date = `${element.date}T05:00:00.000Z`;
+              if (nextItem < array.length) {
+                array[nextItem].change = array[nextItem].value - element.value;
+                array[nextItem].percChange =
+                  array[nextItem].change / element.value;
+              }
+              return element;
+            })
+          }
         });
       });
+
+    // const fakeServerData = [
+    //   {
+    //     value: 3189.51,
+    //     date: "2018-11-21"
+    //   },
+    //   {
+    //     value: 3196.26,
+    //     date: "2018-11-22"
+    //   },
+    //   {
+    //     value: 3196.26,
+    //     date: "2018-11-23"
+    //   },
+    //   {
+    //     value: 3223.95,
+    //     date: "2018-11-24"
+    //   }
+    // ].map((element, index, array) => {
+    //   const nextIndex = index + 1;
+    //   element.date = `${element.date}T05:00:00.000Z`;
+    //   if (nextIndex < array.length) {
+    //     const change = array[nextIndex].value - element.value;
+    //     array[nextIndex].change = change;
+    //     array[nextIndex].percChange = change / element.value;
+    //   }
+    //   return element;
+    // });
+
+    // setTimeout(() => {
+    // this.setState({
+    //   trmapiData: {
+    //     isLoading: false,
+    //     data: fakeServerData
+    //   }
+    // });
+    // }, 0);
   }
 
   render() {
-    if (this.state.trmapiData.length === 0) {
-      return (
-        <ThemeProvider theme={defaultTheme}>
-          <AppWrapper>
-            <GlobalStyle />
-            {/* <!-- loader --> */}
-          </AppWrapper>
-        </ThemeProvider>
-      );
+    let currentValue = {};
+    if (!this.state.trmapiData.isLoading) {
+      currentValue = this.state.trmapiData.data[
+        this.state.trmapiData.data.length - 1
+      ];
     }
-    const currentValue = this.state.trmapiData[
-      this.state.trmapiData.length - 1
-    ];
     return (
       <ThemeProvider theme={defaultTheme}>
         <AppWrapper>
           <GlobalStyle />
           <nav>
-            <img
-              width="60px"
-              height="auto"
-              src={logo}
-              className="App-logo"
-              alt="logo"
-            />
-            <Menu />
+            <img width="60px" height="auto" src={logo} alt="logo" />
+            <Menu apiStatus={this.state.apiStatus} />
           </nav>
-          <header>
-            <h1>Tasa Representativa del Mercado</h1>
-            <h2>
-              <PrettyDate date={currentValue.date} />
-            </h2>
-            <MainTicker currentValue={currentValue} />
-            <CopyValueButton valueId={`value-${currentValue.date}`} />
-          </header>
-          <main>
-            <HistoricTable trmapiData={this.state.trmapiData} />
-          </main>
-          <Footer />
+          {this.state.trmapiData.isLoading ? (
+            "Cargando..."
+          ) : (
+            <Fragment>
+              <header>
+                <h1>Tasa Representativa del Mercado</h1>
+                <h2>
+                  <PrettyDate date={currentValue.date} />
+                </h2>
+                <MainTicker currentValue={currentValue} />
+                <CopyValueButton valueId={`value-${currentValue.date}`} />
+              </header>
+              <main>
+                <HistoricTable trmapiData={this.state.trmapiData.data} />
+              </main>
+            </Fragment>
+          )}
+          <Footer apiStatus={this.state.apiStatus} />
         </AppWrapper>
       </ThemeProvider>
     );

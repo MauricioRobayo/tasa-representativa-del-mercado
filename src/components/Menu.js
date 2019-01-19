@@ -18,6 +18,7 @@ const Ul = styled.ul`
       height: 0.75em;
       margin-right: 0.5em;
       width: 0.75em;
+      background-color: ${({ theme }) => theme.colors.equal};
     }
     .up {
       background-color: ${({ theme }) => theme.colors.up};
@@ -29,24 +30,32 @@ const Ul = styled.ul`
   }
 `;
 
-const Menu = () => {
+const Menu = ({ apiStatus }) => {
+  let apiStatusClass = "status";
+  if (!apiStatus.isLoading) {
+    const status = Object.values(apiStatus.status).reduce(
+      (acc, curr) => (acc += curr),
+      0
+    );
+    apiStatusClass += status === 6 ? " up" : status === 27 ? " down" : "";
+  }
   return (
     <Ul>
-      <li>
-        <a href="https://status.trmapi.com">
-          <span
-            className="status up"
-            role="img"
-            aria-label="Status: funcionando"
-          />
-          Status
-        </a>
-      </li>
       <li>
         <a href="https://docs.trmapi.com">API</a>
       </li>
       <li>
         <a href="https://github.com/trmapi">Código</a>
+      </li>
+      <li>
+        <a href="https://status.trmapi.com">
+          <span
+            className={apiStatusClass}
+            role="img"
+            aria-label="Status: funcionando"
+          />
+          Status
+        </a>
       </li>
     </Ul>
   );
