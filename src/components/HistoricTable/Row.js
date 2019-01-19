@@ -39,7 +39,7 @@ const Row = ({ data }) => {
         />
       </td>
       <td align="left">
-        <CopyValueButton valueId={`value-${data.date}`} />
+        <CopyValueButton className="table" valueId={`value-${data.date}`} />
       </td>
     </Tr>
   );

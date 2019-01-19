@@ -6,10 +6,22 @@ const ButtonWrapper = styled.button`
   color: ${({ theme }) => theme.colors.white};
   border: none;
   font-size: 1rem;
-  padding: 0.5em 0.5em 0.35em;
+  padding: ${({ copied }) =>
+    copied ? "0.35em 0.5em 0.5em" : "0.5em 0.5em 0.35em"};
   width: 100%;
   max-width: 280px;
   border-radius: 4px;
+  &.table {
+    padding: ${({ copied }) =>
+      copied ? "0.35em 0.5em 0.40em" : "0.5em 0.5em 0.25em"};
+    font-size: 0.85em;
+    .text {
+      display: none;
+      @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
+        display: inline;
+      }
+    }
+  }
   .text {
     margin-left: 0.5em;
   }
@@ -22,7 +34,6 @@ class CopyValueButton extends Component {
   constructor(props) {
     super(props);
     this.state = { copied: false };
-    // this.state = { copyImg: "⧉", copyText: "Copiar valor" };
     this.preventDefault = this.preventDefault.bind(this);
     this.copyValue = this.copyValue.bind(this);
   }
@@ -36,14 +47,15 @@ class CopyValueButton extends Component {
     copyText.select();
     document.execCommand("copy");
     this.setState({ copied: true });
-    setTimeout(() => this.setState({ copied: false }), 2000);
+    setTimeout(() => this.setState({ copied: false }), 1500);
   }
   render() {
     return (
       <ButtonWrapper
         data-value-id={this.props.valueId}
-        className="button"
+        className={this.props.className}
         onClick={this.copyValue}
+        copied={this.state.copied}
       >
         <span
           onClick={this.preventDefault}
@@ -51,7 +63,7 @@ class CopyValueButton extends Component {
           role="img"
           aria-label="copy-value"
         >
-          {this.state.copied ? "✓" : "⧉"}
+          {this.state.copied ? "👍" : "⧉"}
         </span>
         <span onClick={this.preventDefault} className="text">
           {this.state.copied ? "Valor copiado" : "Copiar valor"}

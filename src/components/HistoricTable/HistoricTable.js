@@ -30,16 +30,6 @@ const Table = styled.table`
   th:last-child {
     padding: 0.5em 0 0.25em;
   }
-  button {
-    padding: 0.5em 0.5em 0.25em 0.5em;
-    font-size: 0.85em;
-    .text {
-      display: none;
-      @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
-        display: inline;
-      }
-    }
-  }
   .percChange,
   .text {
     display: none;
