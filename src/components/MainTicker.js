@@ -20,7 +20,7 @@ const TickerWrapper = styled.div`
     margin-left: 0.5rem;
   }
   span.down::after {
-    content: "▲";
+    content: "▼";
     font-size: 0.5em;
     margin-left: 0.5rem;
   }
