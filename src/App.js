@@ -4,7 +4,7 @@ import styled, {
   ThemeProvider
 } from "styled-components/macro";
 import CopyValueButton from "./components/CopyValueButton";
-import HistoricTable from "./components/HistoricTable/HistoricTable";
+import HistoricTable from "./components/HistoricTable";
 import MainTicker from "./components/MainTicker";
 import Menu from "./components/Menu";
 import PrettyDate from "./components/PrettyDate";
