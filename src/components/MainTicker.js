@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Value from "./Value";
 
 const TickerWrapper = styled.div`
@@ -14,15 +14,15 @@ const TickerWrapper = styled.div`
     font-size: 0.5em;
     margin-right: 0.5rem;
   }
-  span.up::after {
-    content: "▲";
+  span::after {
     font-size: 0.5em;
     margin-left: 0.5rem;
   }
+  span.up::after {
+    content: "▲";
+  }
   span.down::after {
     content: "▼";
-    font-size: 0.5em;
-    margin-left: 0.5rem;
   }
 `;
 

@@ -1,19 +1,26 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React from "react";
+import styled from "styled-components/macro";
 
-const ButtonWrapper = styled.button`
+const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white};
   border: none;
   font-size: 1rem;
-  padding: ${({ copied }) =>
-    copied ? "0.35em 0.5em 0.5em" : "0.5em 0.5em 0.35em"};
+  padding: ${({ copied }) => (copied ? "0.35em 0 0.5em" : "0.5em 0 0.35em")};
   width: 100%;
   max-width: 280px;
   border-radius: 4px;
+  &:hover {
+    cursor: pointer;
+  }
   &.table {
     padding: ${({ copied }) =>
-      copied ? "0.35em 0.5em 0.40em" : "0.5em 0.5em 0.25em"};
+      copied ? "0.35em 0 0.55em" : "0.75em 0 0.25em"};
+    @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
+      padding: ${({ copied }) =>
+        copied ? "0.25em 0 0.35em" : "0.5em 0 0.25em"};
+      min-width: 145px;
+    }
     font-size: 0.85em;
     .text {
       display: none;
@@ -30,47 +37,19 @@ const ButtonWrapper = styled.button`
   }
 `;
 
-class CopyValueButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { copied: false };
-    this.preventDefault = this.preventDefault.bind(this);
-    this.copyValue = this.copyValue.bind(this);
-  }
-  preventDefault(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  }
-
-  copyValue(e) {
-    var copyText = document.getElementById(e.target.dataset.valueId);
-    copyText.select();
-    document.execCommand("copy");
-    this.setState({ copied: true });
-    setTimeout(() => this.setState({ copied: false }), 1500);
-  }
-  render() {
-    return (
-      <ButtonWrapper
-        data-value-id={this.props.valueId}
-        className={this.props.className}
-        onClick={this.copyValue}
-        copied={this.state.copied}
-      >
-        <span
-          onClick={this.preventDefault}
-          className="img"
-          role="img"
-          aria-label="copy-value"
-        >
-          {this.state.copied ? "👍" : "⧉"}
-        </span>
-        <span onClick={this.preventDefault} className="text">
-          {this.state.copied ? "Valor copiado" : "Copiar valor"}
-        </span>
-      </ButtonWrapper>
-    );
-  }
-}
+const CopyValueButton = props => (
+  <Button
+    className={props.className}
+    onClick={props.onClick}
+    copied={props.copied}
+  >
+    <span className="img" role="img" aria-label="copy-value">
+      {props.copied ? "👍" : "⧉"}
+    </span>
+    <span className="text">
+      {props.copied ? "Valor copiado" : "Copiar valor"}
+    </span>
+  </Button>
+);
 
 export default CopyValueButton;

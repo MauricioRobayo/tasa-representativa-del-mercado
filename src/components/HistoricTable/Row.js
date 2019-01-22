@@ -1,8 +1,8 @@
 import React from "react";
-import CopyValueButton from "../CopyValueButton";
 import Value from "../Value";
 import TableDate from "./TableDate";
 import styled from "styled-components";
+import CopyValueButtonContainer from "../../containers/CopyValueButtonContainer";
 
 const Tr = styled.tr`
   .change {
@@ -39,7 +39,10 @@ const Row = ({ data }) => {
         />
       </td>
       <td align="left">
-        <CopyValueButton className="table" valueId={`value-${data.date}`} />
+        <CopyValueButtonContainer
+          className="table"
+          valueId={`value-${data.date}`}
+        />
       </td>
     </Tr>
   );

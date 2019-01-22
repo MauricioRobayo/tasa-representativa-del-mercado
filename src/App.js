@@ -3,7 +3,7 @@ import styled, {
   createGlobalStyle,
   ThemeProvider
 } from "styled-components/macro";
-import CopyValueButton from "./components/CopyValueButton";
+import CopyValueButtonContainer from "./containers/CopyValueButtonContainer";
 import HistoricTable from "./components/HistoricTable";
 import MainTicker from "./components/MainTicker";
 import Menu from "./components/Menu";
@@ -78,62 +78,13 @@ const AppWrapper = styled.div`
 class App extends Component {
   constructor(props) {
     super(props);
-    this.apiStatuses = {
-      up: 2,
-      seemsDown: 8,
-      down: 9
-    };
     this.state = {
-      apiStatus: {
-        isLoading: true,
-        status: {
-          date: this.apiStatuses.seemsDown,
-          latest: this.apiStatuses.seemsDown,
-          timeseries: this.apiStatuses.seemsDown
-        }
-      },
-      trmapiData: {
-        isLoading: true,
-        data: []
-      }
+      isLoading: true,
+      data: []
     };
   }
   async componentDidMount() {
-    const uptimerobotApiEndpoint = "https://api.uptimerobot.com/v2/getMonitors";
     const trmapiApiEndpoint = "https://api.trmapi.com/timeseries";
-
-    const statusApiKeys = {
-      date: "m781797926-631e3f4a2285409184ae1e38",
-      latest: "m781581966-601f617ed8c9c269e9ce15c2",
-      timeseries: "m781801938-be596bd67e56f095cf26186d"
-    };
-
-    const statusPromises = Object.values(statusApiKeys).map(apiKey =>
-      fetch(uptimerobotApiEndpoint, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ api_key: apiKey })
-      })
-    );
-
-    Promise.all(statusPromises).then(responses =>
-      Promise.all(responses.map(response => response.json())).then(
-        apiStatuses => {
-          this.setState({
-            apiStatus: {
-              isLoading: false,
-              status: apiStatuses.reduce((acc, curr) => {
-                acc[curr.monitors[0].friendly_name] = curr.monitors[0].status;
-                return acc;
-              }, {})
-            }
-          });
-        }
-      )
-    );
 
     const date = new Date();
     const startDate = new Date(
@@ -153,66 +104,25 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({
-          trmapiData: {
-            isLoading: false,
-            data: data.map((element, index, array) => {
-              const nextItem = index + 1;
-              element.date = `${element.date}T05:00:00.000Z`;
-              if (nextItem < array.length) {
-                array[nextItem].change = array[nextItem].value - element.value;
-                array[nextItem].percChange =
-                  array[nextItem].change / element.value;
-              }
-              return element;
-            })
-          }
+          isLoading: false,
+          data: data.map((element, index, array) => {
+            const nextItem = index + 1;
+            element.date = `${element.date}T05:00:00.000Z`;
+            if (nextItem < array.length) {
+              array[nextItem].change = array[nextItem].value - element.value;
+              array[nextItem].percChange =
+                array[nextItem].change / element.value;
+            }
+            return element;
+          })
         });
       });
-
-    // const fakeServerData = [
-    //   {
-    //     value: 3189.51,
-    //     date: "2018-11-21"
-    //   },
-    //   {
-    //     value: 3196.26,
-    //     date: "2018-11-22"
-    //   },
-    //   {
-    //     value: 3196.26,
-    //     date: "2018-11-23"
-    //   },
-    //   {
-    //     value: 3223.95,
-    //     date: "2018-11-24"
-    //   }
-    // ].map((element, index, array) => {
-    //   const nextIndex = index + 1;
-    //   element.date = `${element.date}T05:00:00.000Z`;
-    //   if (nextIndex < array.length) {
-    //     const change = array[nextIndex].value - element.value;
-    //     array[nextIndex].change = change;
-    //     array[nextIndex].percChange = change / element.value;
-    //   }
-    //   return element;
-    // });
-
-    // setTimeout(() => {
-    // this.setState({
-    //   trmapiData: {
-    //     isLoading: false,
-    //     data: fakeServerData
-    //   }
-    // });
-    // }, 0);
   }
 
   render() {
     let currentValue = {};
-    if (!this.state.trmapiData.isLoading) {
-      currentValue = this.state.trmapiData.data[
-        this.state.trmapiData.data.length - 1
-      ];
+    if (!this.state.isLoading) {
+      currentValue = this.state.data[this.state.data.length - 1];
     }
     return (
       <ThemeProvider theme={defaultTheme}>
@@ -220,9 +130,9 @@ class App extends Component {
           <GlobalStyle />
           <nav>
             <img width="60px" height="auto" src={logo} alt="logo" />
-            <Menu apiStatus={this.state.apiStatus} />
+            <Menu />
           </nav>
-          {this.state.trmapiData.isLoading ? (
+          {this.state.isLoading ? (
             "Cargando..."
           ) : (
             <Fragment>
@@ -232,14 +142,16 @@ class App extends Component {
                   <PrettyDate date={currentValue.date} />
                 </h2>
                 <MainTicker currentValue={currentValue} />
-                <CopyValueButton valueId={`value-${currentValue.date}`} />
+                <CopyValueButtonContainer
+                  valueId={`value-${currentValue.date}`}
+                />
               </header>
               <main>
-                <HistoricTable trmapiData={this.state.trmapiData.data} />
+                <HistoricTable trmapiData={this.state.data} />
               </main>
             </Fragment>
           )}
-          <Footer apiStatus={this.state.apiStatus} />
+          <Footer />
         </AppWrapper>
       </ThemeProvider>
     );
