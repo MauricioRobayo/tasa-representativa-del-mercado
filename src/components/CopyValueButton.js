@@ -16,10 +16,14 @@ const Button = styled.button`
   &.table {
     padding: ${({ copied }) =>
       copied ? "0.35em 0 0.55em" : "0.75em 0 0.25em"};
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    border-radius: 50%;
     @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
       padding: ${({ copied }) =>
         copied ? "0.25em 0 0.35em" : "0.5em 0 0.25em"};
       min-width: 145px;
+      border-radius: 4px;
     }
     font-size: 0.85em;
     .text {
