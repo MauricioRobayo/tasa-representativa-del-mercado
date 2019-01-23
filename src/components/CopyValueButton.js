@@ -16,8 +16,8 @@ const Button = styled.button`
   &.table {
     padding: ${({ copied }) =>
       copied ? "0.35em 0 0.55em" : "0.75em 0 0.25em"};
-    min-width: 1.5rem;
-    min-height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
     @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
       padding: ${({ copied }) =>
