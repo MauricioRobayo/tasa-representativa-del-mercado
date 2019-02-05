@@ -76,13 +76,10 @@ const AppWrapper = styled.div`
 `;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: true,
-      data: []
-    };
-  }
+  state = {
+    isLoading: true,
+    data: []
+  };
   componentDidMount() {
     const trmapiApiEndpoint = "https://api.trmapi.com/timeseries";
 

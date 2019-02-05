@@ -2,22 +2,19 @@ import React, { Component } from "react";
 import ApiStatus from "../components/ApiStatus";
 
 export default class ApiStatusContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.apiStatuses = {
-      up: 2,
-      seemsDown: 8,
-      down: 9
-    };
-    this.state = {
-      isLoading: true,
-      status: {
-        date: this.apiStatuses.seemsDown,
-        latest: this.apiStatuses.seemsDown,
-        timeseries: this.apiStatuses.seemsDown
-      }
-    };
-  }
+  apiStatuses = {
+    up: 2,
+    seemsDown: 8,
+    down: 9
+  };
+  state = {
+    isLoading: true,
+    status: {
+      date: this.apiStatuses.seemsDown,
+      latest: this.apiStatuses.seemsDown,
+      timeseries: this.apiStatuses.seemsDown
+    }
+  };
   componentDidMount() {
     const uptimerobotApiEndpoint = "https://api.uptimerobot.com/v2/getMonitors";
     const statusApiKeys = {
