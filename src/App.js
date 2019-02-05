@@ -83,7 +83,7 @@ class App extends Component {
       data: []
     };
   }
-  async componentDidMount() {
+  componentDidMount() {
     const trmapiApiEndpoint = "https://api.trmapi.com/timeseries";
 
     const date = new Date();
