@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components/macro";
-import ApiStatusContainer from "../containers/ApiStatusContainer";
+import React from 'react'
+import styled from 'styled-components/macro'
+import ApiStatusContainer from '../containers/ApiStatusContainer'
 
 const Ul = styled.ul`
   font-size: 0.85em;
@@ -18,7 +18,7 @@ const Ul = styled.ul`
       text-decoration: none;
     }
   }
-`;
+`
 
 const Menu = () => {
   return (
@@ -33,7 +33,7 @@ const Menu = () => {
         <ApiStatusContainer />
       </li>
     </Ul>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu

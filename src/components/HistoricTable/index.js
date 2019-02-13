@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Row from "./Row";
+import React from 'react'
+import styled from 'styled-components'
+import Row from './Row'
 
 const Table = styled.table`
   border-collapse: collapse;
@@ -37,12 +37,12 @@ const Table = styled.table`
       display: inline;
     }
   }
-`;
+`
 
 const HistoricTable = ({ trmapiData }) => {
-  let rows = [];
+  let rows = []
   for (let i = trmapiData.length - 1; i > 0; i -= 1) {
-    rows.push(<Row key={trmapiData[i].date} data={trmapiData[i]} />);
+    rows.push(<Row key={trmapiData[i].date} data={trmapiData[i]} />)
   }
   return (
     <Table>
@@ -56,7 +56,7 @@ const HistoricTable = ({ trmapiData }) => {
       </thead>
       <tbody>{rows}</tbody>
     </Table>
-  );
-};
+  )
+}
 
-export default HistoricTable;
+export default HistoricTable

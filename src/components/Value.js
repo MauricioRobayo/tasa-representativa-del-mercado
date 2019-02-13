@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react'
+import styled from 'styled-components/macro'
 
 const ValueWrapper = styled.span`
   textarea {
@@ -10,7 +10,7 @@ const ValueWrapper = styled.span`
     opacity: 0;
   }
   color: ${props => props.theme.colors[props.change]};
-`;
+`
 
 const Value = props => {
   let {
@@ -20,17 +20,17 @@ const Value = props => {
     maximumFractionDigits,
     before,
     after,
-    valueId
-  } = props;
+    valueId,
+  } = props
   return (
     <ValueWrapper
-      className={change === 0 ? "equal" : change > 0 ? "up" : "down"}
-      change={change === 0 ? "equal" : change > 0 ? "up" : "down"}
+      className={change === 0 ? 'equal' : change > 0 ? 'up' : 'down'}
+      change={change === 0 ? 'equal' : change > 0 ? 'up' : 'down'}
     >
       {before}
       {value.toLocaleString(undefined, {
         minimumFractionDigits,
-        maximumFractionDigits
+        maximumFractionDigits,
       })}
       {after}
       {valueId && (
@@ -41,14 +41,14 @@ const Value = props => {
         />
       )}
     </ValueWrapper>
-  );
-};
+  )
+}
 
 Value.defaultProps = {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
-  before: "",
-  after: "",
-  className: ""
-};
-export default Value;
+  before: '',
+  after: '',
+  className: '',
+}
+export default Value

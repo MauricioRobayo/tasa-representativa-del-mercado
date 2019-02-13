@@ -1,30 +1,30 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react'
 import styled, {
   createGlobalStyle,
-  ThemeProvider
-} from "styled-components/macro";
-import CopyValueButtonContainer from "./containers/CopyValueButtonContainer";
-import HistoricTable from "./components/HistoricTable";
-import MainTicker from "./components/MainTicker";
-import Menu from "./components/Menu";
-import PrettyDate from "./components/PrettyDate";
-import logo from "./logo.svg";
-import Footer from "./components/Footer";
+  ThemeProvider,
+} from 'styled-components/macro'
+import CopyValueButtonContainer from './containers/CopyValueButtonContainer'
+import HistoricTable from './components/HistoricTable'
+import MainTicker from './components/MainTicker'
+import Menu from './components/Menu'
+import PrettyDate from './components/PrettyDate'
+import logo from './logo.svg'
+import Footer from './components/Footer'
 
 const defaultTheme = {
   colors: {
-    up: "#00C853",
-    down: "#F44336",
-    equal: "#FFE42D",
-    dark: "#282c34",
-    white: "#fff",
-    grey: "#9E9E9E",
-    greyDarker: "#444444",
-    primary: "#0CA0E8"
+    up: '#00C853',
+    down: '#F44336',
+    equal: '#FFE42D',
+    dark: '#282c34',
+    white: '#fff',
+    grey: '#9E9E9E',
+    greyDarker: '#444444',
+    primary: '#0CA0E8',
   },
-  maxWidth: "640px",
-  width: "95%"
-};
+  maxWidth: '640px',
+  width: '95%',
+}
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${defaultTheme.colors.dark};
     color: ${defaultTheme.colors.white};
   }
-`;
+`
 
 const AppWrapper = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
@@ -73,53 +73,53 @@ const AppWrapper = styled.div`
       margin: auto;
     }
   }
-`;
+`
 
 class App extends Component {
   state = {
     isLoading: true,
-    data: []
-  };
+    data: [],
+  }
   componentDidMount() {
-    const trmapiApiEndpoint = "https://api.trmapi.com/timeseries";
+    const trmapiApiEndpoint = 'https://api.trmapi.com/timeseries'
 
-    const date = new Date();
+    const date = new Date()
     const startDate = new Date(
       date.getFullYear(),
       date.getMonth(),
       date.getDate() - 30
-    );
+    )
     const endDate = new Date(
       date.getFullYear(),
       date.getMonth(),
       date.getDate() + 1
-    );
+    )
     const url = `${trmapiApiEndpoint}?start_date=${startDate
       .toISOString()
-      .substring(0, 10)}&end_date=${endDate.toISOString().substring(0, 10)}`;
+      .substring(0, 10)}&end_date=${endDate.toISOString().substring(0, 10)}`
     fetch(url)
       .then(response => response.json())
       .then(data => {
         this.setState({
           isLoading: false,
           data: data.map((element, index, array) => {
-            const nextItem = index + 1;
-            element.date = `${element.date}T05:00:00.000Z`;
+            const nextItem = index + 1
+            element.date = `${element.date}T05:00:00.000Z`
             if (nextItem < array.length) {
-              array[nextItem].change = array[nextItem].value - element.value;
+              array[nextItem].change = array[nextItem].value - element.value
               array[nextItem].percChange =
-                array[nextItem].change / element.value;
+                array[nextItem].change / element.value
             }
-            return element;
-          })
-        });
-      });
+            return element
+          }),
+        })
+      })
   }
 
   render() {
-    let currentValue = {};
+    let currentValue = {}
     if (!this.state.isLoading) {
-      currentValue = this.state.data[this.state.data.length - 1];
+      currentValue = this.state.data[this.state.data.length - 1]
     }
     return (
       <ThemeProvider theme={defaultTheme}>
@@ -130,7 +130,7 @@ class App extends Component {
             <Menu />
           </nav>
           {this.state.isLoading ? (
-            "Cargando..."
+            'Cargando...'
           ) : (
             <Fragment>
               <header>
@@ -151,8 +151,8 @@ class App extends Component {
           <Footer />
         </AppWrapper>
       </ThemeProvider>
-    );
+    )
   }
 }
 
-export default App;
+export default App

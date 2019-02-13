@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react'
+import styled from 'styled-components/macro'
 
 const Status = styled.span`
   border-radius: 50%;
@@ -8,14 +8,14 @@ const Status = styled.span`
   margin-right: 0.5em;
   width: 0.75em;
   background-color: ${props => props.theme.colors[props.apiStatus]};
-`;
+`
 
 const ApiStatus = props => {
   const status = Object.values(props.status).reduce(
     (acc, curr) => (acc += curr),
     0
-  );
-  const apiStatus = status === 6 ? "up" : status === 27 ? "down" : "equal";
+  )
+  const apiStatus = status === 6 ? 'up' : status === 27 ? 'down' : 'equal'
   return (
     <a href="https://status.trmapi.com">
       <Status
@@ -25,7 +25,7 @@ const ApiStatus = props => {
       />
       Status
     </a>
-  );
-};
+  )
+}
 
-export default ApiStatus;
+export default ApiStatus

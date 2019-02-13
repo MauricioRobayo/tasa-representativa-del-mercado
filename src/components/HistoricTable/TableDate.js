@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const Time = styled.time`
   .date {
@@ -14,25 +14,25 @@ const Time = styled.time`
       display: inline;
     }
   }
-`;
+`
 
 const TableDate = ({ date }) => {
-  const dateObject = new Date(date);
+  const dateObject = new Date(date)
   const weekdays = [
-    "domingo",
-    "lunes",
-    "martes",
-    "miércoles",
-    "jueves",
-    "viernes",
-    "sábado"
-  ];
+    'domingo',
+    'lunes',
+    'martes',
+    'miércoles',
+    'jueves',
+    'viernes',
+    'sábado',
+  ]
   return (
     <Time dateTime={date}>
       <span className="date">{date.substring(0, 10)}</span>
       <span className="day">{weekdays[dateObject.getDay()]}</span>
     </Time>
-  );
-};
+  )
+}
 
-export default TableDate;
+export default TableDate

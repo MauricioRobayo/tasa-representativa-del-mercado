@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components/macro";
-import Menu from "./Menu";
+import React from 'react'
+import styled from 'styled-components/macro'
+import Menu from './Menu'
 
 const FooterWrapper = styled.footer`
   margin: 1em auto;
@@ -13,7 +13,7 @@ const FooterWrapper = styled.footer`
   ul {
     justify-content: center;
   }
-`;
+`
 
 const Footer = ({ apiStatus }) => {
   return (
@@ -27,7 +27,7 @@ const Footer = ({ apiStatus }) => {
         <a href="https://github.com/trmapi/">Ayúdenos a mejorarlo.</a>
       </p>
     </FooterWrapper>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

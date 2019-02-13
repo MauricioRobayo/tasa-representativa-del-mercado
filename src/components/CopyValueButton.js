@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react'
+import styled from 'styled-components/macro'
 
 const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white};
   border: none;
   font-size: 1rem;
-  padding: ${({ copied }) => (copied ? "0.35em 0 0.5em" : "0.5em 0 0.35em")};
+  padding: ${({ copied }) => (copied ? '0.35em 0 0.5em' : '0.5em 0 0.35em')};
   width: 100%;
   max-width: 280px;
   border-radius: 4px;
@@ -15,13 +15,13 @@ const Button = styled.button`
   }
   &.table {
     padding: ${({ copied }) =>
-      copied ? "0.35em 0 0.55em" : "0.75em 0 0.25em"};
+      copied ? '0.35em 0 0.55em' : '0.75em 0 0.25em'};
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
     @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
       padding: ${({ copied }) =>
-        copied ? "0.25em 0 0.35em" : "0.5em 0 0.25em"};
+        copied ? '0.25em 0 0.35em' : '0.5em 0 0.25em'};
       min-width: 145px;
       border-radius: 4px;
     }
@@ -39,7 +39,7 @@ const Button = styled.button`
   > span {
     pointer-events: none;
   }
-`;
+`
 
 const CopyValueButton = props => (
   <Button
@@ -48,12 +48,12 @@ const CopyValueButton = props => (
     copied={props.copied}
   >
     <span className="img" role="img" aria-label="copy-value">
-      {props.copied ? "👍" : "⧉"}
+      {props.copied ? '👍' : '⧉'}
     </span>
     <span className="text">
-      {props.copied ? "Valor copiado" : "Copiar valor"}
+      {props.copied ? 'Valor copiado' : 'Copiar valor'}
     </span>
   </Button>
-);
+)
 
-export default CopyValueButton;
+export default CopyValueButton
