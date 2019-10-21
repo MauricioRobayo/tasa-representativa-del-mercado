@@ -17,7 +17,7 @@ const ApiStatus = props => {
   )
   const apiStatus = status === 6 ? 'up' : status === 27 ? 'down' : 'equal'
   return (
-    <a href="https://status.trmapi.com">
+    <a href="https://stats.uptimerobot.com/O8BNlFmo6">
       <Status
         apiStatus={apiStatus}
         role="img"

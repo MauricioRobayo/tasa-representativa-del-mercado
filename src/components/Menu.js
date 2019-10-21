@@ -24,7 +24,7 @@ const Menu = () => {
   return (
     <Ul>
       <li>
-        <a href="https://docs.trmapi.com">API</a>
+        <a href="https://trmapi.github.io/trmapi">API</a>
       </li>
       <li>
         <a href="https://github.com/trmapi">Código</a>

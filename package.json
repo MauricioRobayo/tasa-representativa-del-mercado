@@ -13,7 +13,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publish": "gh-pages --dist build --user 'Mauricio Robayo <rfmajo@gmail.com>' --repo https://${GITHUB_TOKEN}@github.com/trmapi/www.trmapi.com.git",
+    "publish": "gh-pages --dist build --user 'Mauricio Robayo <rfmajo@gmail.com>' --repo https://${GITHUB_TOKEN}@github.com/trmapi/trmapi.github.io.git",
     "deploy": "run-s build publish"
   },
   "browserslist": [
