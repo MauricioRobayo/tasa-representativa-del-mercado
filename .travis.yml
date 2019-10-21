@@ -3,14 +3,15 @@ notifications:
   email:
     on_failure: always
 node_js:
-  - "10.16.0"
+  - '10.16.0'
 script:
   - npm run build
   - npm test
 deploy:
-  skip_cleanup: true
-  provider: script
-  script: npm run deploy
+  provider: pages:git
+  edge: true # opt in to dpl v2
+  repo: trmapi/trmapi.github.io
+  local_dir: build
   on:
     branch: master
 after_success:
