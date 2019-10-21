@@ -12,6 +12,7 @@ deploy:
   edge: true # opt in to dpl v2
   repo: trmapi/trmapi.github.io
   local_dir: build
+  target_branch: master
   on:
     branch: master
 after_success:
