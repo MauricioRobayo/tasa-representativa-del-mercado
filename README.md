@@ -1,6 +1,6 @@
 # www.trmapi.com
 
-[![Build Status](https://travis-ci.com/trmapi/www.trmapi.com.svg?branch=master)](https://travis-ci.com/trmapi/www.trmapi.com)
-[![Greenkeeper badge](https://badges.greenkeeper.io/trmapi/www.trmapi.com.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.com/trmapi/trmapi.github.io.svg?branch=develop)](https://travis-ci.com/trmapi/trmapi.github.io)
+[![Greenkeeper badge](https://badges.greenkeeper.io/trmapi/trmapi.github.io.svg)](https://greenkeeper.io/)
 
-Tasa Representativa del Mercado
+Página para la Tasa Representativa del Mercado.
