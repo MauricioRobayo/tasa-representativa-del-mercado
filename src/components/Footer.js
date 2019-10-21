@@ -20,7 +20,7 @@ const Footer = ({ apiStatus }) => {
     <FooterWrapper>
       <Menu apiStatus={apiStatus} />
       <p>
-        <a href="https://www.trmapi.com">trmapi</a> es un proyecto de código
+        <a href="https://trmapi.github.io">trmapi</a> es un proyecto de código
         abierto.
       </p>
       <p>
