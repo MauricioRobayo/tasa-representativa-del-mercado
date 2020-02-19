@@ -106,7 +106,6 @@ class App extends Component {
             }
             return e
           })
-        console.log(transformedData)
         this.setState({
           isLoading: false,
           data: transformedData,
