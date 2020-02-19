@@ -23,10 +23,9 @@ const Menu = () => {
   return (
     <Ul>
       <li>
-        <a href="https://trmapi.github.io/trmapi">API</a>
-      </li>
-      <li>
-        <a href="https://github.com/trmapi">Código</a>
+        <a href="https://github.com/MauricioRobayo/tasa-representativa-del-mercado">
+          Código
+        </a>
       </li>
     </Ul>
   )
