@@ -75,5 +75,16 @@
         }
       ]
     ]
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MauricioRobayo/tasa-representativa-del-mercado.git"
+  },
+  "keywords": [],
+  "author": "Mauricio Robayo <hi@mauriciorobayo.com> (www.mauriciorobayo.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MauricioRobayo/tasa-representativa-del-mercado/issues"
   }
 }
