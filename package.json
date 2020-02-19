@@ -36,5 +36,19 @@
     "trailingComma": "es5",
     "semi": false,
     "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier"
+    ],
+    "src/**/*.js": [
+      "eslint --fix"
+    ]
   }
 }
