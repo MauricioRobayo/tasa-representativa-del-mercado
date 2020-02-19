@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8139642a99c788cf23f5d8b70c872572",
+    "revision": "7d1a4bde8c8f394609b77b43f6ad2335",
     "url": "/tasa-representativa-del-mercado/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tasa-representativa-del-mercado/static/js/2.2478c657.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a886d59adbe0376bb3a2",
-    "url": "/tasa-representativa-del-mercado/static/js/main.45cf9e9d.chunk.js"
+    "revision": "debb2d0340b3f6df97b5",
+    "url": "/tasa-representativa-del-mercado/static/js/main.859e53ab.chunk.js"
   },
   {
     "revision": "43c01b3379b7d9da53fd",
