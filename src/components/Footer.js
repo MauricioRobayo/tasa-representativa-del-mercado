@@ -20,11 +20,15 @@ const Footer = () => {
     <FooterWrapper>
       <Menu />
       <p>
-        <a href="https://trmapi.github.io">trmapi</a> es un proyecto de código
-        abierto.
+        <a href="https://www.mauriciorobayo.com/tasa-representativa-del-mercado">
+          trmapi
+        </a>{' '}
+        es un proyecto de código abierto.
       </p>
       <p>
-        <a href="https://github.com/trmapi/">Ayúdenos a mejorarlo.</a>
+        <a href="https://github.com/MauricioRobayo/tasa-representativa-del-mercado/">
+          Ayúdenos a mejorarlo.
+        </a>
       </p>
     </FooterWrapper>
   )
