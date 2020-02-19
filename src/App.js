@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import styled, {
   createGlobalStyle,
   ThemeProvider,
@@ -129,7 +129,7 @@ class App extends Component {
           {this.state.isLoading ? (
             'Cargando...'
           ) : (
-            <Fragment>
+            <>
               <header>
                 <h1>Tasa Representativa del Mercado</h1>
                 <h2>
@@ -143,7 +143,7 @@ class App extends Component {
               <main>
                 <HistoricTable trmapiData={this.state.data} />
               </main>
-            </Fragment>
+            </>
           )}
           <Footer />
         </AppWrapper>
