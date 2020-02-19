@@ -50,5 +50,10 @@
     "src/**/*.js": [
       "eslint --fix"
     ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
