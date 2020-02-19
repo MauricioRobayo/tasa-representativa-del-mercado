@@ -15,10 +15,10 @@ const FooterWrapper = styled.footer`
   }
 `
 
-const Footer = ({ apiStatus }) => {
+const Footer = () => {
   return (
     <FooterWrapper>
-      <Menu apiStatus={apiStatus} />
+      <Menu />
       <p>
         <a href="https://trmapi.github.io">trmapi</a> es un proyecto de código
         abierto.

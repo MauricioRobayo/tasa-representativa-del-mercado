@@ -41,7 +41,7 @@ const Table = styled.table`
 
 const HistoricTable = ({ trmapiData }) => {
   let rows = []
-  for (let i = trmapiData.length - 1; i > 0; i -= 1) {
+  for (let i = 0; i < trmapiData.length - 1; i += 1) {
     rows.push(<Row key={trmapiData[i].date} data={trmapiData[i]} />)
   }
   return (

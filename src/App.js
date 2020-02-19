@@ -81,37 +81,35 @@ class App extends Component {
     data: [],
   }
   componentDidMount() {
-    const trmapiApiEndpoint = 'https://api.trmapi.com/timeseries'
-
-    const date = new Date()
-    const startDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate() - 30
-    )
-    const endDate = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate() + 1
-    )
-    const url = `${trmapiApiEndpoint}?start_date=${startDate
-      .toISOString()
-      .substring(0, 10)}&end_date=${endDate.toISOString().substring(0, 10)}`
+    const url = 'https://www.datos.gov.co/resource/32sa-8pi3.json?$limit=30'
     fetch(url)
       .then(response => response.json())
       .then(data => {
+        const transformedData = data
+          .reduce((acc, e, i) => {
+            const startDate = new Date(e.vigenciadesde)
+            const endDate = new Date(e.vigenciahasta)
+            while (endDate >= startDate) {
+              acc.push({
+                value: e.valor,
+                date: endDate.toISOString(),
+              })
+
+              endDate.setDate(endDate.getDate() - 1)
+            }
+            return acc
+          }, [])
+          .map((e, i, arr) => {
+            if (i + 1 < arr.length) {
+              e.change = e.value - arr[i + 1].value
+              e.percChange = e.change / e.value
+            }
+            return e
+          })
+        console.log(transformedData)
         this.setState({
           isLoading: false,
-          data: data.map((element, index, array) => {
-            const nextItem = index + 1
-            element.date = `${element.date}T05:00:00.000Z`
-            if (nextItem < array.length) {
-              array[nextItem].change = array[nextItem].value - element.value
-              array[nextItem].percChange =
-                array[nextItem].change / element.value
-            }
-            return element
-          }),
+          data: transformedData,
         })
       })
   }
@@ -119,7 +117,7 @@ class App extends Component {
   render() {
     let currentValue = {}
     if (!this.state.isLoading) {
-      currentValue = this.state.data[this.state.data.length - 1]
+      currentValue = this.state.data[0]
     }
     return (
       <ThemeProvider theme={defaultTheme}>

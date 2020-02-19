@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import ApiStatusContainer from '../containers/ApiStatusContainer'
 
 const Ul = styled.ul`
   font-size: 0.85em;
@@ -28,9 +27,6 @@ const Menu = () => {
       </li>
       <li>
         <a href="https://github.com/trmapi">Código</a>
-      </li>
-      <li>
-        <ApiStatusContainer />
       </li>
     </Ul>
   )
