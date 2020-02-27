@@ -4,17 +4,17 @@
     "main.js.map": "/tasa-representativa-del-mercado/static/js/main.859e53ab.chunk.js.map",
     "runtime-main.js": "/tasa-representativa-del-mercado/static/js/runtime-main.8024262f.js",
     "runtime-main.js.map": "/tasa-representativa-del-mercado/static/js/runtime-main.8024262f.js.map",
-    "static/js/2.b00197be.chunk.js": "/tasa-representativa-del-mercado/static/js/2.b00197be.chunk.js",
-    "static/js/2.b00197be.chunk.js.map": "/tasa-representativa-del-mercado/static/js/2.b00197be.chunk.js.map",
+    "static/js/2.99b0a023.chunk.js": "/tasa-representativa-del-mercado/static/js/2.99b0a023.chunk.js",
+    "static/js/2.99b0a023.chunk.js.map": "/tasa-representativa-del-mercado/static/js/2.99b0a023.chunk.js.map",
     "index.html": "/tasa-representativa-del-mercado/index.html",
-    "precache-manifest.773bc1e8708a873ac567d579dfdaee55.js": "/tasa-representativa-del-mercado/precache-manifest.773bc1e8708a873ac567d579dfdaee55.js",
+    "precache-manifest.02b28b371a46ad16ebcbe138228d8e28.js": "/tasa-representativa-del-mercado/precache-manifest.02b28b371a46ad16ebcbe138228d8e28.js",
     "service-worker.js": "/tasa-representativa-del-mercado/service-worker.js",
-    "static/js/2.b00197be.chunk.js.LICENSE.txt": "/tasa-representativa-del-mercado/static/js/2.b00197be.chunk.js.LICENSE.txt",
+    "static/js/2.99b0a023.chunk.js.LICENSE.txt": "/tasa-representativa-del-mercado/static/js/2.99b0a023.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/tasa-representativa-del-mercado/static/media/logo.00dd8334.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.8024262f.js",
-    "static/js/2.b00197be.chunk.js",
+    "static/js/2.99b0a023.chunk.js",
     "static/js/main.859e53ab.chunk.js"
   ]
 }
