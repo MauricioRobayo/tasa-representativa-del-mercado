@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.js": "/tasa-representativa-del-mercado/static/js/main.859e53ab.chunk.js",
-    "main.js.map": "/tasa-representativa-del-mercado/static/js/main.859e53ab.chunk.js.map",
-    "runtime-main.js": "/tasa-representativa-del-mercado/static/js/runtime-main.8024262f.js",
-    "runtime-main.js.map": "/tasa-representativa-del-mercado/static/js/runtime-main.8024262f.js.map",
-    "static/js/2.d8160ff6.chunk.js": "/tasa-representativa-del-mercado/static/js/2.d8160ff6.chunk.js",
-    "static/js/2.d8160ff6.chunk.js.map": "/tasa-representativa-del-mercado/static/js/2.d8160ff6.chunk.js.map",
+    "main.js": "/tasa-representativa-del-mercado/static/js/main.3803dedc.chunk.js",
+    "main.js.map": "/tasa-representativa-del-mercado/static/js/main.3803dedc.chunk.js.map",
+    "runtime-main.js": "/tasa-representativa-del-mercado/static/js/runtime-main.a00eaaac.js",
+    "runtime-main.js.map": "/tasa-representativa-del-mercado/static/js/runtime-main.a00eaaac.js.map",
+    "static/js/2.40b3bbe0.chunk.js": "/tasa-representativa-del-mercado/static/js/2.40b3bbe0.chunk.js",
+    "static/js/2.40b3bbe0.chunk.js.map": "/tasa-representativa-del-mercado/static/js/2.40b3bbe0.chunk.js.map",
     "index.html": "/tasa-representativa-del-mercado/index.html",
-    "precache-manifest.7badb5df16ff57bb08c6d33f47df4195.js": "/tasa-representativa-del-mercado/precache-manifest.7badb5df16ff57bb08c6d33f47df4195.js",
+    "precache-manifest.1386c2c3a7c46e9d2e8eafa9e1e18c13.js": "/tasa-representativa-del-mercado/precache-manifest.1386c2c3a7c46e9d2e8eafa9e1e18c13.js",
     "service-worker.js": "/tasa-representativa-del-mercado/service-worker.js",
-    "static/js/2.d8160ff6.chunk.js.LICENSE.txt": "/tasa-representativa-del-mercado/static/js/2.d8160ff6.chunk.js.LICENSE.txt",
+    "static/js/2.40b3bbe0.chunk.js.LICENSE.txt": "/tasa-representativa-del-mercado/static/js/2.40b3bbe0.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/tasa-representativa-del-mercado/static/media/logo.00dd8334.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8024262f.js",
-    "static/js/2.d8160ff6.chunk.js",
-    "static/js/main.859e53ab.chunk.js"
+    "static/js/runtime-main.a00eaaac.js",
+    "static/js/2.40b3bbe0.chunk.js",
+    "static/js/main.3803dedc.chunk.js"
   ]
 }
