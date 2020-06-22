@@ -22,7 +22,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^8.1.0",
+    "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^8.1.0",
     "eslint-config-prettier": "^6.11.0",
     "husky": "^4.2.5",
