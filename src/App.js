@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import styled, {
   createGlobalStyle,
   ThemeProvider,
-} from 'styled-components/macro'
-import CopyValueButtonContainer from './containers/CopyValueButtonContainer'
-import HistoricTable from './components/HistoricTable'
-import MainTicker from './components/MainTicker'
-import Menu from './components/Menu'
-import PrettyDate from './components/PrettyDate'
-import logo from './logo.svg'
-import Footer from './components/Footer'
+} from 'styled-components/macro';
+import CopyValueButtonContainer from './containers/CopyValueButtonContainer';
+import HistoricTable from './components/HistoricTable';
+import MainTicker from './components/MainTicker';
+import Menu from './components/Menu';
+import PrettyDate from './components/PrettyDate';
+import logo from './logo.svg';
+import Footer from './components/Footer';
 
 const defaultTheme = {
   colors: {
@@ -24,7 +24,7 @@ const defaultTheme = {
   },
   maxWidth: '640px',
   width: '95%',
-}
+};
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${defaultTheme.colors.dark};
     color: ${defaultTheme.colors.white};
   }
-`
+`;
 
 const AppWrapper = styled.div`
   max-width: ${({ theme }) => theme.maxWidth};
@@ -73,50 +73,50 @@ const AppWrapper = styled.div`
       margin: auto;
     }
   }
-`
+`;
 
 class App extends Component {
   state = {
     isLoading: true,
     data: [],
-  }
+  };
   componentDidMount() {
-    const url = 'https://www.datos.gov.co/resource/32sa-8pi3.json?$limit=30'
+    const url = 'https://www.datos.gov.co/resource/32sa-8pi3.json?$limit=30';
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         const transformedData = data
           .reduce((acc, e, i) => {
-            const startDate = new Date(e.vigenciadesde)
-            const endDate = new Date(e.vigenciahasta)
+            const startDate = new Date(e.vigenciadesde);
+            const endDate = new Date(e.vigenciahasta);
             while (endDate >= startDate) {
               acc.push({
                 value: e.valor,
                 date: endDate.toISOString(),
-              })
+              });
 
-              endDate.setDate(endDate.getDate() - 1)
+              endDate.setDate(endDate.getDate() - 1);
             }
-            return acc
+            return acc;
           }, [])
           .map((e, i, arr) => {
             if (i + 1 < arr.length) {
-              e.change = e.value - arr[i + 1].value
-              e.percChange = e.change / e.value
+              e.change = e.value - arr[i + 1].value;
+              e.percChange = e.change / e.value;
             }
-            return e
-          })
+            return e;
+          });
         this.setState({
           isLoading: false,
           data: transformedData,
-        })
-      })
+        });
+      });
   }
 
   render() {
-    let currentValue = {}
+    let currentValue = {};
     if (!this.state.isLoading) {
-      currentValue = this.state.data[0]
+      currentValue = this.state.data[0];
     }
     return (
       <ThemeProvider theme={defaultTheme}>
@@ -148,8 +148,8 @@ class App extends Component {
           <Footer />
         </AppWrapper>
       </ThemeProvider>
-    )
+    );
   }
 }
 
-export default App
+export default App;

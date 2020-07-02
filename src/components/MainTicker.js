@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components/macro'
-import Value from './Value'
+import React from 'react';
+import styled from 'styled-components/macro';
+import Value from './Value';
 
 const TickerWrapper = styled.div`
   margin: 1rem 0 0.5rem;
@@ -24,18 +24,18 @@ const TickerWrapper = styled.div`
   span.down::after {
     content: '▼';
   }
-`
+`;
 
-const MainTicker = props => {
+const MainTicker = (props) => {
   if (!props.currentValue) {
-    return null
+    return null;
   }
-  const { change, value, date } = props.currentValue
+  const { change, value, date } = props.currentValue;
   return (
     <TickerWrapper>
       <Value value={value} change={change} valueId={`value-${date}`} />
     </TickerWrapper>
-  )
-}
+  );
+};
 
-export default MainTicker
+export default MainTicker;
