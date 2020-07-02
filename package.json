@@ -10,6 +10,7 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
+    "format": "prettier --write .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,8 +35,6 @@
     "styledComponents": {}
   },
   "prettier": {
-    "trailingComma": "es5",
-    "semi": false,
     "singleQuote": true
   },
   "husky": {
@@ -45,7 +44,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier"
     ],
     "src/**/*.js": [
@@ -65,13 +64,13 @@
         "@semantic-release/npm",
         {
           "npmPublish": false,
-          "tarballDir": "dist"
+          "tarballDir": "build"
         }
       ],
       [
         "@semantic-release/github",
         {
-          "assets": "dist/*.tgz"
+          "assets": "build/*.tgz"
         }
       ]
     ]
@@ -86,5 +85,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MauricioRobayo/tasa-representativa-del-mercado/issues"
-  }
+  },
+  "files": [
+    "build"
+  ]
 }
