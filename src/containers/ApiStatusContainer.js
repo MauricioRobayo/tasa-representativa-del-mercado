@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import ApiStatus from '../components/ApiStatus'
+import React, { Component } from 'react';
+import ApiStatus from '../components/ApiStatus';
 
 export default class ApiStatusContainer extends Component {
   apiStatuses = {
     up: 2,
     seemsDown: 8,
     down: 9,
-  }
+  };
   state = {
     isLoading: true,
     status: {
@@ -14,16 +14,16 @@ export default class ApiStatusContainer extends Component {
       latest: this.apiStatuses.seemsDown,
       timeseries: this.apiStatuses.seemsDown,
     },
-  }
+  };
   componentDidMount() {
-    const uptimerobotApiEndpoint = 'https://api.uptimerobot.com/v2/getMonitors'
+    const uptimerobotApiEndpoint = 'https://api.uptimerobot.com/v2/getMonitors';
     const statusApiKeys = {
       date: 'm781797926-631e3f4a2285409184ae1e38',
       latest: 'm781581966-601f617ed8c9c269e9ce15c2',
       timeseries: 'm781801938-be596bd67e56f095cf26186d',
-    }
+    };
 
-    const statusPromises = Object.values(statusApiKeys).map(apiKey =>
+    const statusPromises = Object.values(statusApiKeys).map((apiKey) =>
       fetch(uptimerobotApiEndpoint, {
         method: 'POST',
         headers: {
@@ -32,23 +32,23 @@ export default class ApiStatusContainer extends Component {
         },
         body: JSON.stringify({ api_key: apiKey }),
       })
-    )
+    );
 
-    Promise.all(statusPromises).then(responses =>
-      Promise.all(responses.map(response => response.json())).then(
-        apiStatuses => {
+    Promise.all(statusPromises).then((responses) =>
+      Promise.all(responses.map((response) => response.json())).then(
+        (apiStatuses) => {
           this.setState({
             isLoading: false,
             status: apiStatuses.reduce((acc, curr) => {
-              acc[curr.monitors[0].friendly_name] = curr.monitors[0].status
-              return acc
+              acc[curr.monitors[0].friendly_name] = curr.monitors[0].status;
+              return acc;
             }, {}),
-          })
+          });
         }
       )
-    )
+    );
   }
   render() {
-    return <ApiStatus {...this.state} />
+    return <ApiStatus {...this.state} />;
   }
 }

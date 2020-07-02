@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components/macro'
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const ValueWrapper = styled.span`
   textarea {
@@ -9,10 +9,10 @@ const ValueWrapper = styled.span`
     width: 0;
     opacity: 0;
   }
-  color: ${props => props.theme.colors[props.change]};
-`
+  color: ${(props) => props.theme.colors[props.change]};
+`;
 
-const Value = props => {
+const Value = (props) => {
   let {
     value,
     change,
@@ -21,7 +21,7 @@ const Value = props => {
     before,
     after,
     valueId,
-  } = props
+  } = props;
   return (
     <ValueWrapper
       className={change === 0 ? 'equal' : change > 0 ? 'up' : 'down'}
@@ -41,8 +41,8 @@ const Value = props => {
         />
       )}
     </ValueWrapper>
-  )
-}
+  );
+};
 
 Value.defaultProps = {
   minimumFractionDigits: 2,
@@ -50,5 +50,5 @@ Value.defaultProps = {
   before: '',
   after: '',
   className: '',
-}
-export default Value
+};
+export default Value;

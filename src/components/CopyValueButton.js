@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components/macro'
+import React from 'react';
+import styled from 'styled-components/macro';
 
 const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.primary};
@@ -39,9 +39,9 @@ const Button = styled.button`
   > span {
     pointer-events: none;
   }
-`
+`;
 
-const CopyValueButton = props => (
+const CopyValueButton = (props) => (
   <Button
     className={props.className}
     onClick={props.onClick}
@@ -54,6 +54,6 @@ const CopyValueButton = props => (
       {props.copied ? 'Valor copiado' : 'Copiar valor'}
     </span>
   </Button>
-)
+);
 
-export default CopyValueButton
+export default CopyValueButton;
