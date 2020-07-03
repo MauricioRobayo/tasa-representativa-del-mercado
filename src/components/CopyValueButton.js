@@ -7,13 +7,9 @@ const Button = styled.button`
   border: none;
   font-size: 1rem;
   padding: ${({ copied }) => (copied ? '0.35em 0 0.5em' : '0.5em 0 0.35em')};
-  margin: 0 auto;
   width: 100%;
   max-width: 280px;
   border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   &:hover {
     cursor: pointer;
   }
@@ -22,6 +18,7 @@ const Button = styled.button`
     height: 1.5rem;
     border-radius: 50%;
     @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
+      width: 100%;
       padding: ${({ copied }) =>
         copied ? '0.25em 0 0.35em' : '0.5em 0 0.25em'};
       min-width: 145px;
