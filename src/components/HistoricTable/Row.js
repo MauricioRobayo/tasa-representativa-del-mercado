@@ -2,7 +2,7 @@ import React from 'react';
 import Value from '../Value';
 import TableDate from './TableDate';
 import styled from 'styled-components';
-import CopyValueButtonContainer from '../../containers/CopyValueButtonContainer';
+import CopyValueButtonContainer from '../CopyValueButtonContainer';
 
 const Tr = styled.tr`
   .change {

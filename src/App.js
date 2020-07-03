@@ -3,7 +3,7 @@ import styled, {
   createGlobalStyle,
   ThemeProvider,
 } from 'styled-components/macro';
-import CopyValueButtonContainer from './containers/CopyValueButtonContainer';
+import CopyValueButtonContainer from './components/CopyValueButtonContainer';
 import HistoricTable from './components/HistoricTable';
 import MainTicker from './components/MainTicker';
 import Menu from './components/Menu';
