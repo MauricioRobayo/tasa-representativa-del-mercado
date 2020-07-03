@@ -30,10 +30,10 @@ const MainTicker = (props) => {
   if (!props.currentValue) {
     return null;
   }
-  const { change, value, date } = props.currentValue;
+  const { change, value } = props.currentValue;
   return (
     <TickerWrapper>
-      <Value value={value} change={change} valueId={`value-${date}`} />
+      <Value value={value} change={change} />
     </TickerWrapper>
   );
 };

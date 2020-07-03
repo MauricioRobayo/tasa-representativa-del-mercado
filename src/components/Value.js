@@ -20,7 +20,6 @@ const Value = (props) => {
     maximumFractionDigits,
     before,
     after,
-    valueId,
   } = props;
   const numValue = parseFloat(value);
   return (
@@ -34,15 +33,6 @@ const Value = (props) => {
         maximumFractionDigits,
       })}
       {after}
-      {valueId && (
-        <textarea
-          id={valueId}
-          defaultValue={numValue.toLocaleString(undefined, {
-            useGrouping: false,
-          })}
-          readOnly
-        />
-      )}
     </ValueWrapper>
   );
 };

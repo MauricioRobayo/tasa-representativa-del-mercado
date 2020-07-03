@@ -115,7 +115,7 @@ const App = () => {
     <ThemeProvider theme={defaultTheme}>
       <AppWrapper>
         <GlobalStyle />
-        {console.log('rendering...', {isLoading})}
+        {console.log('rendering...', { isLoading })}
         <nav>
           <img width="60px" height="auto" src={logo} alt="logo" />
           <Menu />
@@ -130,9 +130,7 @@ const App = () => {
                 <PrettyDate date={currentValue.date} />
               </h2>
               <MainTicker currentValue={currentValue} />
-              <CopyValueButtonContainer
-                valueId={`value-${currentValue.date}`}
-              />
+              <CopyValueButtonContainer value={currentValue.value} />
             </header>
             <main>
               <HistoricTable trmapiData={state} />
