@@ -26,11 +26,7 @@ const Row = ({ data }) => {
         <TableDate date={data.date} />
       </td>
       <td className="right">
-        <Value
-          value={data.value}
-          change={data.change}
-          valueId={`value-${data.date}`}
-        />
+        <Value value={data.value} change={data.change} />
       </td>
       <td className="right">
         <Value
@@ -48,10 +44,7 @@ const Row = ({ data }) => {
         />
       </td>
       <td className="center">
-        <CopyValueButtonContainer
-          className="table"
-          valueId={`value-${data.date}`}
-        />
+        <CopyValueButtonContainer className="table" value={data.value} />
       </td>
     </Tr>
   );

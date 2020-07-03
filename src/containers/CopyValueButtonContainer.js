@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import CopyValueButton from '../components/CopyValueButton';
 
-class CopyValueButtonContainer extends Component {
-  state = { copied: false };
+const CopyValueButtonContainer = ({ className, value }) => {
+  const [copied, setCopied] = useState(false);
 
-  copyValue = () => {
-    var copyText = document.getElementById(this.props.valueId);
-    copyText.select();
-    document.execCommand('copy');
-    this.setState({ copied: true });
-    setTimeout(() => this.setState({ copied: false }), 1500);
+  const copyValue = () => {
+    if (!navigator.clipboard) {
+      return;
+    }
+    navigator.clipboard
+      .writeText(value)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+      })
+      .catch((err) => {
+        console.log('Failed to copy!');
+      });
   };
-  render() {
-    return (
-      <CopyValueButton
-        className={this.props.className}
-        onClick={this.copyValue}
-        copied={this.state.copied}
-      />
-    );
-  }
-}
+  return (
+    <CopyValueButton
+      className={className}
+      onClick={copyValue}
+      copied={copied}
+    />
+  );
+};
 
 export default CopyValueButtonContainer;
