@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CopyValueButton from '../components/CopyValueButton';
+import CopyValueButton from './CopyValueButton';
 
 const CopyValueButtonContainer = ({ className, value }) => {
   const [copied, setCopied] = useState(false);
