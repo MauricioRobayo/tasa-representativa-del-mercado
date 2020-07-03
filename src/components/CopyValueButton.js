@@ -14,7 +14,7 @@ const Button = styled.button`
     cursor: pointer;
   }
   &.table {
-    /* width: 1.5rem; */
+    padding: ${({ copied }) => (copied ? '0 0 0.35em' : '0.45em 0 0.35em')};
     height: 1.5rem;
     font-size: 0.85em;
     .text {
