@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "tasa-representativa-del-mercado",
+  "version": "0.0.0-semantic-release",
   "private": true,
   "homepage": "https://www.mauriciorobayo.com/tasa-representativa-del-mercado",
   "dependencies": {
