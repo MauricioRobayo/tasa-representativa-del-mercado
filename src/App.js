@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled, {
   createGlobalStyle,
   ThemeProvider,
@@ -10,6 +10,7 @@ import Menu from './components/Menu';
 import PrettyDate from './components/PrettyDate';
 import logo from './logo.svg';
 import Footer from './components/Footer';
+import useApi from './useApi';
 
 const defaultTheme = {
   colors: {
@@ -76,40 +77,7 @@ const AppWrapper = styled.div`
 `;
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [state, setData] = useState([]);
-
-  useEffect(() => {
-    const url = 'https://www.datos.gov.co/resource/32sa-8pi3.json?$limit=30';
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const transformedData = data
-          .reduce((acc, e, i) => {
-            const startDate = new Date(e.vigenciadesde);
-            const endDate = new Date(e.vigenciahasta);
-            while (endDate >= startDate) {
-              acc.push({
-                value: e.valor,
-                date: endDate.toISOString(),
-              });
-
-              endDate.setDate(endDate.getDate() - 1);
-            }
-            return acc;
-          }, [])
-          .map((e, i, arr) => {
-            if (i + 1 < arr.length) {
-              e.change = e.value - arr[i + 1].value;
-              e.percChange = e.change / e.value;
-            }
-            return e;
-          });
-        setData(transformedData);
-        setIsLoading(false);
-      });
-  }, []);
-
+  const { isLoading, state } = useApi();
   const currentValue = isLoading ? {} : state[0];
   return (
     <ThemeProvider theme={defaultTheme}>
