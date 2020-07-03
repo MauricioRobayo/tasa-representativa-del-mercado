@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, {
   createGlobalStyle,
   ThemeProvider,
@@ -75,12 +75,11 @@ const AppWrapper = styled.div`
   }
 `;
 
-class App extends Component {
-  state = {
-    isLoading: true,
-    data: [],
-  };
-  componentDidMount() {
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [state, setData] = useState([]);
+
+  useEffect(() => {
     const url = 'https://www.datos.gov.co/resource/32sa-8pi3.json?$limit=30';
     fetch(url)
       .then((response) => response.json())
@@ -106,50 +105,44 @@ class App extends Component {
             }
             return e;
           });
-        this.setState({
-          isLoading: false,
-          data: transformedData,
-        });
+        setData(transformedData);
+        setIsLoading(false);
       });
-  }
+  }, []);
 
-  render() {
-    let currentValue = {};
-    if (!this.state.isLoading) {
-      currentValue = this.state.data[0];
-    }
-    return (
-      <ThemeProvider theme={defaultTheme}>
-        <AppWrapper>
-          <GlobalStyle />
-          <nav>
-            <img width="60px" height="auto" src={logo} alt="logo" />
-            <Menu />
-          </nav>
-          {this.state.isLoading ? (
-            'Cargando...'
-          ) : (
-            <>
-              <header>
-                <h1>Tasa Representativa del Mercado</h1>
-                <h2>
-                  <PrettyDate date={currentValue.date} />
-                </h2>
-                <MainTicker currentValue={currentValue} />
-                <CopyValueButtonContainer
-                  valueId={`value-${currentValue.date}`}
-                />
-              </header>
-              <main>
-                <HistoricTable trmapiData={this.state.data} />
-              </main>
-            </>
-          )}
-          <Footer />
-        </AppWrapper>
-      </ThemeProvider>
-    );
-  }
-}
+  const currentValue = isLoading ? {} : state[0];
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <AppWrapper>
+        <GlobalStyle />
+        {console.log('rendering...', {isLoading})}
+        <nav>
+          <img width="60px" height="auto" src={logo} alt="logo" />
+          <Menu />
+        </nav>
+        {isLoading ? (
+          'Cargando...'
+        ) : (
+          <>
+            <header>
+              <h1>Tasa Representativa del Mercado</h1>
+              <h2>
+                <PrettyDate date={currentValue.date} />
+              </h2>
+              <MainTicker currentValue={currentValue} />
+              <CopyValueButtonContainer
+                valueId={`value-${currentValue.date}`}
+              />
+            </header>
+            <main>
+              <HistoricTable trmapiData={state} />
+            </main>
+          </>
+        )}
+        <Footer />
+      </AppWrapper>
+    </ThemeProvider>
+  );
+};
 
 export default App;
