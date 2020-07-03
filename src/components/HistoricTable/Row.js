@@ -14,9 +14,6 @@ const Tr = styled.tr`
   .left {
     text-align: left;
   }
-  .center {
-    text-align: center;
-  }
 `;
 
 const Row = ({ data }) => {
@@ -43,7 +40,7 @@ const Row = ({ data }) => {
           after="%)"
         />
       </td>
-      <td className="center">
+      <td className="right">
         <CopyValueButtonContainer className="table" value={data.value} />
       </td>
     </Tr>

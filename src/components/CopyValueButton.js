@@ -14,21 +14,11 @@ const Button = styled.button`
     cursor: pointer;
   }
   &.table {
-    width: 1.5rem;
-    border-radius: 50%;
-    @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
-      width: 100%;
-      border-radius: 4px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-    }
+    /* width: 1.5rem; */
+    height: 1.5rem;
     font-size: 0.85em;
     .text {
       display: none;
-      @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
-        display: inline;
-      }
     }
   }
   .text {

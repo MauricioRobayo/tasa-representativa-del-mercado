@@ -51,7 +51,7 @@ const HistoricTable = ({ trmapiData }) => {
           <th align="left">Fecha</th>
           <th align="right">TRM</th>
           <th align="right">Cambio</th>
-          <th />
+          <th align="right">Copiar</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
