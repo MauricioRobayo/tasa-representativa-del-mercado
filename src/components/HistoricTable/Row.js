@@ -8,22 +8,31 @@ const Tr = styled.tr`
   .change {
     margin-right: 0.5em;
   }
+  .right {
+    text-align: right;
+  }
+  .left {
+    text-align: left;
+  }
+  .center {
+    text-align: center;
+  }
 `;
 
 const Row = ({ data }) => {
   return (
     <Tr>
-      <td align="left">
+      <td className="left">
         <TableDate date={data.date} />
       </td>
-      <td align="right">
+      <td className="right">
         <Value
           value={data.value}
           change={data.change}
           valueId={`value-${data.date}`}
         />
       </td>
-      <td align="right">
+      <td className="right">
         <Value
           className="change"
           value={data.change}
@@ -38,7 +47,7 @@ const Row = ({ data }) => {
           after="%)"
         />
       </td>
-      <td align="left">
+      <td className="center">
         <CopyValueButtonContainer
           className="table"
           valueId={`value-${data.date}`}
