@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tasa-representativa-del-mercado/precache-manifest.9e8d53c4e316cb884fdf3bfdd0507925.js"
+  "/tasa-representativa-del-mercado/precache-manifest.927aaec7a5105d57242b66a823f05871.js"
 );
 
 self.addEventListener('message', (event) => {
