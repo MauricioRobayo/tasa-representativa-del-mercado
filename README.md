@@ -9,8 +9,8 @@ The information used is provided by the [official JSON API](https://dev.socrata.
 
 ## Built with
 
-- Create Reac App
-- Styled Components
+- [Create React App](https://reactjs.org/docs/create-a-new-react-app.html)
+- [Styled Components](https://styled-components.com/)
 
 ## Contributing
 
