@@ -22,13 +22,14 @@ const Value = (props) => {
     after,
     valueId,
   } = props;
+  const numValue = parseFloat(value);
   return (
     <ValueWrapper
       className={change === 0 ? 'equal' : change > 0 ? 'up' : 'down'}
       change={change === 0 ? 'equal' : change > 0 ? 'up' : 'down'}
     >
       {before}
-      {value.toLocaleString(undefined, {
+      {numValue.toLocaleString(undefined, {
         minimumFractionDigits,
         maximumFractionDigits,
       })}
@@ -36,7 +37,9 @@ const Value = (props) => {
       {valueId && (
         <textarea
           id={valueId}
-          defaultValue={value.toLocaleString(undefined, { useGrouping: false })}
+          defaultValue={numValue.toLocaleString(undefined, {
+            useGrouping: false,
+          })}
           readOnly
         />
       )}
