@@ -15,14 +15,13 @@ const Button = styled.button`
   }
   &.table {
     width: 1.5rem;
-    height: 1.5rem;
     border-radius: 50%;
     @media screen and (min-width: ${({ theme }) => theme.maxWidth}) {
       width: 100%;
-      padding: ${({ copied }) =>
-        copied ? '0.25em 0 0.35em' : '0.5em 0 0.25em'};
-      min-width: 145px;
       border-radius: 4px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
     font-size: 0.85em;
     .text {
