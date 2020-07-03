@@ -48,9 +48,7 @@ const CopyValueButton = (props) => (
     <span className="img" role="img" aria-label="copy-value">
       {props.copied ? '👍' : '⧉'}
     </span>
-    <span className="text">
-      {props.copied ? 'Valor copiado' : 'Copiar valor'}
-    </span>
+    <span className="text">{props.copied ? 'Copiado' : 'Copiar valor'}</span>
   </Button>
 );
 
