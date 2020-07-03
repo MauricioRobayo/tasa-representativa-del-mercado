@@ -7,15 +7,17 @@ const Button = styled.button`
   border: none;
   font-size: 1rem;
   padding: ${({ copied }) => (copied ? '0.35em 0 0.5em' : '0.5em 0 0.35em')};
+  margin: 0 auto;
   width: 100%;
   max-width: 280px;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
     cursor: pointer;
   }
   &.table {
-    padding: ${({ copied }) =>
-      copied ? '0.35em 0 0.55em' : '0.75em 0 0.25em'};
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
