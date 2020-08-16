@@ -8,28 +8,20 @@ function useApi() {
   useEffect(() => {
     const trmapi = new TrmApi();
     trmapi.history({ limit: 30, order: 'DESC' }).then((data) => {
-      const transformedData = data
-        .reduce((acc, e, i) => {
-          const startDate = new Date(e.vigenciadesde);
-          const endDate = new Date(e.vigenciahasta);
-          while (endDate >= startDate) {
-            acc.push({
-              value: e.valor,
-              date: endDate.toISOString(),
-            });
-
-            endDate.setDate(endDate.getDate() - 1);
-          }
-          return acc;
-        }, [])
-        .map((e, i, arr) => {
+      setData(
+        data.map((e, i, arr) => {
+          const transformedData = {
+            value: e.valor,
+            date: new Date(e.vigenciadesde).toISOString(),
+            endDate: new Date(e.vigenciahasta).toISOString(),
+          };
           if (i + 1 < arr.length) {
-            e.change = e.value - arr[i + 1].value;
-            e.percChange = e.change / e.value;
+            transformedData.change = e.valor - arr[i + 1].valor;
+            transformedData.percChange = transformedData.change / e.valor;
           }
-          return e;
-        });
-      setData(transformedData);
+          return transformedData;
+        })
+      );
       setIsLoading(false);
     });
   }, []);
