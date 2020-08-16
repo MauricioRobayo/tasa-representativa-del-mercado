@@ -74,6 +74,13 @@ const AppWrapper = styled.div`
       margin: auto;
     }
   }
+  .until {
+    font-size: 0.85rem;
+    color: ${defaultTheme.colors.grey};
+    span {
+      margin-right: 0.5rem;
+    }
+  }
 `;
 
 const App = () => {
@@ -97,6 +104,12 @@ const App = () => {
               <h2>
                 <PrettyDate date={currentValue.date} />
               </h2>
+              {currentValue.endDate > currentValue.date ? (
+                <div className="until">
+                  <span>hasta:</span>
+                  <PrettyDate date={currentValue.endDate} />
+                </div>
+              ) : null}
               <MainTicker currentValue={currentValue} />
               <CopyValueButtonContainer value={currentValue.value} />
             </header>
