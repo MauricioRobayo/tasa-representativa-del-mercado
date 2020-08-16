@@ -90,7 +90,6 @@ const App = () => {
     <ThemeProvider theme={defaultTheme}>
       <AppWrapper>
         <GlobalStyle />
-        {console.log('rendering...', { isLoading })}
         <nav>
           <img width="60px" height="auto" src={logo} alt="logo" />
           <Menu />
