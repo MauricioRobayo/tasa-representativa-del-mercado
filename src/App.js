@@ -77,9 +77,6 @@ const AppWrapper = styled.div`
   .until {
     font-size: 0.85rem;
     color: ${defaultTheme.colors.grey};
-    span {
-      margin-right: 0.5rem;
-    }
   }
 `;
 
@@ -105,7 +102,7 @@ const App = () => {
               </h2>
               {currentValue.endDate > currentValue.date ? (
                 <div className="until">
-                  <span>hasta:</span>
+                  <span>hasta: </span>
                   <PrettyDate date={currentValue.endDate} />
                 </div>
               ) : null}
