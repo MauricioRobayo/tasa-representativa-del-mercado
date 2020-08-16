@@ -5,10 +5,11 @@
 
 Query Colombia's official exchange rate quotes provided by the [Superintendencia Financiera de Colombia](https://www.superfinanciera.gov.co/).
 
-The information used is provided by the [official JSON API](https://dev.socrata.com/foundry/www.datos.gov.co/32sa-8pi3).
+The information is retrieved from the official [Tasa Representativa del Mercado API](https://dev.socrata.com/foundry/www.datos.gov.co/32sa-8pi3) using the [`trp-api`](https://github.com/mauriciorobayo/trm-api) package.
 
 ## Built with
 
+- [trm-api](https://github.com/mauriciorobayo/trm-api)
 - [Create React App](https://reactjs.org/docs/create-a-new-react-app.html)
 - [Styled Components](https://styled-components.com/)
 
@@ -29,5 +30,3 @@ Give it a ⭐️ if you like this project!
 ## License
 
 This project is [MIT](LICENSE) licensed.
-
-
