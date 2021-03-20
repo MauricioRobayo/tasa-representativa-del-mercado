@@ -35,9 +35,6 @@
   "babelMacros": {
     "styledComponents": {}
   },
-  "prettier": {
-    "singleQuote": true
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",

@@ -1,30 +1,30 @@
-import React from 'react';
+import React from "react";
 import styled, {
   createGlobalStyle,
   ThemeProvider,
-} from 'styled-components/macro';
-import CopyValueButtonContainer from './components/CopyValueButtonContainer';
-import HistoricTable from './components/HistoricTable';
-import MainTicker from './components/MainTicker';
-import Menu from './components/Menu';
-import PrettyDate from './components/PrettyDate';
-import logo from './logo.svg';
-import Footer from './components/Footer';
-import useApi from './useApi';
+} from "styled-components/macro";
+import CopyValueButtonContainer from "./components/CopyValueButtonContainer";
+import HistoricTable from "./components/HistoricTable";
+import MainTicker from "./components/MainTicker";
+import Menu from "./components/Menu";
+import PrettyDate from "./components/PrettyDate";
+import logo from "./logo.svg";
+import Footer from "./components/Footer";
+import useApi from "./useApi";
 
 const defaultTheme = {
   colors: {
-    up: '#00C853',
-    down: '#F44336',
-    equal: '#FFE42D',
-    dark: '#282c34',
-    white: '#fff',
-    grey: '#9E9E9E',
-    greyDarker: '#444444',
-    primary: '#0CA0E8',
+    up: "#00C853",
+    down: "#F44336",
+    equal: "#FFE42D",
+    dark: "#282c34",
+    white: "#fff",
+    grey: "#9E9E9E",
+    greyDarker: "#444444",
+    primary: "#0CA0E8",
   },
-  maxWidth: '640px',
-  width: '95%',
+  maxWidth: "640px",
+  width: "95%",
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -92,7 +92,7 @@ const App = () => {
           <Menu />
         </nav>
         {isLoading ? (
-          'Cargando...'
+          "Cargando..."
         ) : (
           <>
             <header>

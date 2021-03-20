@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Menu from './Menu';
+import React from "react";
+import styled from "styled-components/macro";
+import Menu from "./Menu";
 
 const FooterWrapper = styled.footer`
   margin: 1em auto;
@@ -20,7 +20,7 @@ const Footer = () => {
     <FooterWrapper>
       <Menu />
       <p>
-        Powered by{' '}
+        Powered by{" "}
         <a href="https://github.com/mauriciorobayo/trm-api">trm-api.</a>
       </p>
     </FooterWrapper>

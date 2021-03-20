@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import CopyValueButton from './CopyValueButton';
+import React, { useState } from "react";
+import CopyValueButton from "./CopyValueButton";
 
 const CopyValueButtonContainer = ({ className, value }) => {
   const [copied, setCopied] = useState(false);
@@ -15,7 +15,7 @@ const CopyValueButtonContainer = ({ className, value }) => {
         setTimeout(() => setCopied(false), 1500);
       })
       .catch((err) => {
-        console.log('Failed to copy!');
+        console.log("Failed to copy!");
       });
   };
   return (

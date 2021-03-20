@@ -1,5 +1,5 @@
-import TrmApi from 'trm-api';
-import { useState, useEffect } from 'react';
+import TrmApi from "trm-api";
+import { useState, useEffect } from "react";
 
 function useApi() {
   const [isLoading, setIsLoading] = useState(true);
@@ -7,7 +7,7 @@ function useApi() {
 
   useEffect(() => {
     const trmapi = new TrmApi();
-    trmapi.history({ limit: 30, order: 'DESC' }).then((data) => {
+    trmapi.history({ limit: 30, order: "DESC" }).then((data) => {
       setData(
         data.map((e, i, arr) => {
           const transformedData = {

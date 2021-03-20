@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import Value from './Value';
+import React from "react";
+import styled from "styled-components/macro";
+import Value from "./Value";
 
 const TickerWrapper = styled.div`
   margin: 1rem 0 0.5rem;
@@ -10,7 +10,7 @@ const TickerWrapper = styled.div`
     font-size: 2em;
   }
   span::before {
-    content: '$';
+    content: "$";
     font-size: 0.5em;
     margin-right: 0.5rem;
   }
@@ -19,10 +19,10 @@ const TickerWrapper = styled.div`
     margin-left: 0.5rem;
   }
   span.up::after {
-    content: '▲';
+    content: "▲";
   }
   span.down::after {
-    content: '▼';
+    content: "▼";
   }
 `;
 

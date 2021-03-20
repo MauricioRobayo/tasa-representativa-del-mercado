@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Time = styled.time`
   .date {
@@ -19,13 +19,13 @@ const Time = styled.time`
 const TableDate = ({ date }) => {
   const dateObject = new Date(date);
   const weekdays = [
-    'domingo',
-    'lunes',
-    'martes',
-    'miércoles',
-    'jueves',
-    'viernes',
-    'sábado',
+    "domingo",
+    "lunes",
+    "martes",
+    "miércoles",
+    "jueves",
+    "viernes",
+    "sábado",
   ];
   return (
     <Time dateTime={date}>

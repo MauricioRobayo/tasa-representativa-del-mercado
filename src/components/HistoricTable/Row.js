@@ -1,8 +1,8 @@
-import React from 'react';
-import Value from '../Value';
-import TableDate from './TableDate';
-import styled from 'styled-components';
-import CopyValueButtonContainer from '../CopyValueButtonContainer';
+import React from "react";
+import Value from "../Value";
+import TableDate from "./TableDate";
+import styled from "styled-components";
+import CopyValueButtonContainer from "../CopyValueButtonContainer";
 
 const Tr = styled.tr`
   .change {
@@ -30,7 +30,7 @@ const Row = ({ data }) => {
           className="change"
           value={data.change}
           change={data.change}
-          before={data.change > 0 ? '+' : ''}
+          before={data.change > 0 ? "+" : ""}
         />
         <Value
           className="percChange"

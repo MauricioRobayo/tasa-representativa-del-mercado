@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Row from './Row';
+import React from "react";
+import styled from "styled-components";
+import Row from "./Row";
 
 const Table = styled.table`
   border-collapse: collapse;
