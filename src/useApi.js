@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
 import TrmApi from "trm-api";
-import { useState, useEffect } from "react";
 
 function useApi() {
   const [isLoading, setIsLoading] = useState(true);
-  const [state, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const trmapi = new TrmApi();
@@ -27,7 +27,7 @@ function useApi() {
   }, []);
   return {
     isLoading,
-    state,
+    data,
   };
 }
 

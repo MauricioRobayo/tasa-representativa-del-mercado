@@ -1,8 +1,8 @@
 import React from "react";
-import Value from "../Value";
-import TableDate from "./TableDate";
 import styled from "styled-components";
 import CopyValueButtonContainer from "../CopyValueButtonContainer";
+import Value from "../Value";
+import TableDate from "./TableDate";
 
 const Tr = styled.tr`
   .change {
@@ -17,6 +17,7 @@ const Tr = styled.tr`
 `;
 
 const Row = ({ data }) => {
+  console.log("rendering row", data.date);
   return (
     <Tr>
       <td className="left">

@@ -4,12 +4,12 @@ import styled, {
   ThemeProvider,
 } from "styled-components/macro";
 import CopyValueButtonContainer from "./components/CopyValueButtonContainer";
+import Footer from "./components/Footer";
 import HistoricTable from "./components/HistoricTable";
 import MainTicker from "./components/MainTicker";
 import Menu from "./components/Menu";
 import PrettyDate from "./components/PrettyDate";
 import logo from "./logo.svg";
-import Footer from "./components/Footer";
 import useApi from "./useApi";
 
 const defaultTheme = {
@@ -81,8 +81,8 @@ const AppWrapper = styled.div`
 `;
 
 const App = () => {
-  const { isLoading, state } = useApi();
-  const currentValue = isLoading ? {} : state[0];
+  const { isLoading, data } = useApi();
+  const currentValue = isLoading ? {} : data[0];
   return (
     <ThemeProvider theme={defaultTheme}>
       <AppWrapper>
@@ -110,7 +110,7 @@ const App = () => {
               <CopyValueButtonContainer value={currentValue.value} />
             </header>
             <main>
-              <HistoricTable trmapiData={state} />
+              <HistoricTable trmapiData={data} />
             </main>
           </>
         )}
